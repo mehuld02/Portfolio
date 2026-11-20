@@ -38,7 +38,7 @@ const PROJECTS = [
     desc: "A real-time chat application that allows users to communicate instantly, with a responsive interface and seamless messaging experience.",
     stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.io"],
     cat: ["mern", "frontend", "backend"],
-    github: "https://github.com/mehuld02",
+    github: "https://github.com/mehuld02/Realtime-Chat-App",
     live: "",
   },
 
@@ -59,7 +59,7 @@ const PROJECTS = [
       "REST APIs",
     ],
     cat: ["mern", "frontend", "backend"],
-    github: "https://github.com/mehuld02",
+    github: "https://github.com/mehuld02/Aceview",
     live: "",
   },
 
@@ -79,7 +79,7 @@ const PROJECTS = [
       "JWT Authentication",
     ],
     cat: ["Frontend", "backend"],
-    github: "",
+    github: "https://github.com/mehuld02/TaskFlow",
     live: "",
   },
 
@@ -91,7 +91,7 @@ const PROJECTS = [
     desc: "A RESTful API designed to manage employee attendance records, handle employee data, and track attendance through structured backend operations.",
     stack: ["Python", "FastAPI", "MongoDB", "REST API", "JWT Authentication"],
     cat: ["Backend", "python"],
-    github: "",
+    github: "https://github.com/mehuld02//Employee-attendance-api",
     live: "",
   },
 
@@ -110,7 +110,7 @@ const PROJECTS = [
       "REST API",
     ],
     cat: ["mern", "frontend", "backend"],
-    github: "",
+    github: "https://github.com/mehuld02/MERN-stack-food-Delivery-App",
     live: "",
   },
 
@@ -121,8 +121,8 @@ const PROJECTS = [
     badge: "Python app",
     desc: "A face recognition-based attendance system that detects and recognizes registered faces using computer vision and automatically maintains attendance records.",
     stack: ["Python", "OpenCV", "Tkinter", "MySQL", "LBPH"],
-    cat: ["backend","python"],
-    github: "",
+    cat: ["backend", "python"],
+    github: "https://github.com/mehuld02/Face-Recognition-System",
     live: "",
   },
 ];
