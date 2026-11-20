@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Projects | Mehul Dubey</title>
+  <meta name="description" content="All projects by Mehul Dubey, full stack developer: ResumeIQ, AlgoViz, ChatApp, ACEVIEW and more.">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#081b29; --bg2:#0d2538; --card:#0f2a3f; --line:#1c3b52;
+      --text:#ededed; --muted:#9fb3c4; --main:#00abf0; --green:#3fdc8c;
+      --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+    a{text-decoration:none;color:inherit}
+    a:focus-visible,button:focus-visible{outline:2px solid var(--main);outline-offset:3px}
+
+    .header{position:sticky;top:0;z-index:100;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 24px;
+      padding:14px max(5%,env(safe-area-inset-left,0px));background:rgba(8,27,41,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .logo{font-size:26px;font-weight:700}
+    .logo span{color:var(--main)}
+    .navbar{display:flex;flex-wrap:wrap;align-items:center;gap:0 28px}
+    .navbar a{font-size:16px;font-weight:500;padding:10px 0;border-bottom:2px solid transparent;transition:.3s}
+    .navbar a:hover,.navbar a[aria-current="page"]{color:var(--main);border-color:var(--main)}
+
+    main{flex:1;padding:56px max(5%,env(safe-area-inset-left,0px)) 40px}
+    .inner{max-width:1100px;margin:0 auto}
+    .back{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-family:var(--mono);font-size:14px;color:var(--main);margin-bottom:12px}
+    .back:hover{text-decoration:underline}
+    .tag-line{font-family:var(--mono);font-size:14px;color:var(--green);margin-bottom:6px}
+    h1{font-size:clamp(34px,6vw,56px);font-weight:700;line-height:1.1;margin-bottom:12px}
+    h1 span{color:var(--main)}
+    .sub{color:var(--muted);font-size:17px;max-width:60ch;margin-bottom:44px}
+
+    .filters{display:flex;flex-wrap:wrap;gap:10px;margin:-16px 0 32px}
+    .filters button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);
+      background:var(--card);color:#cfe0ee;font-family:var(--mono);font-size:14px;cursor:pointer;transition:.3s}
+    .filters button span{font-size:12px;color:var(--muted)}
+    .filters button:hover{border-color:var(--main);color:var(--main)}
+    .filters button[aria-pressed="true"]{background:var(--main);border-color:var(--main);color:var(--bg)}
+    .filters button[aria-pressed="true"] span{color:var(--bg)}
+    .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+    .empty{color:var(--muted);padding:32px;border:1px dashed var(--line);border-radius:12px;text-align:center}
+    [hidden]{display:none!important}
+    .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:22px}
+    .proj{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:.3s}
+    .proj:hover{border-color:var(--main);box-shadow:0 0 20px rgba(0,171,240,.25);transform:translateY(-4px)}
+    .thumb{height:140px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+      background:linear-gradient(135deg,hsl(var(--h) 80% 38%),hsl(calc(var(--h) + 50) 75% 22%))}
+    .thumb::before{content:"";position:absolute;inset:0;
+      background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.22),transparent 45%),
+      linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px) 0 0/26px 26px,
+      linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px) 0 0/26px 26px}
+    .thumb i{position:relative;font-size:60px;color:rgba(255,255,255,.92);filter:drop-shadow(0 4px 14px rgba(0,0,0,.35))}
+    .pbody{padding:22px;display:flex;flex-direction:column;gap:14px;flex:1}
+    .pbody h2{font-size:21px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .badge{font-family:var(--mono);font-size:11px;font-weight:400;padding:2px 8px;border-radius:4px;border:1px solid var(--line);color:var(--muted)}
+    .badge.live{color:var(--green);border-color:#1f7a52}
+    .pbody p{color:var(--muted);line-height:1.7;font-size:15px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{font-family:var(--mono);font-size:12.5px;padding:4px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:#cfe0ee}
+    .links{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:auto;padding-top:4px}
+    .links a{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--main);font-weight:500}
+    .links a:hover{text-decoration:underline}
+
+    .cta{display:flex;justify-content:center;margin-top:48px}
+    .btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 28px;border-radius:40px;background:var(--main);color:var(--bg);
+      font-weight:600;border:2px solid var(--main);transition:.3s}
+    .btn:hover{background:transparent;color:var(--main);box-shadow:0 0 18px var(--main)}
+    footer{text-align:center;padding:28px 5% 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.proj{transition:none}.proj:hover{transform:none}}
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="portfolio.html" class="logo" aria-label="Mehul, back to home">Mehul<span>.</span></a>
+    <nav class="navbar" aria-label="Main">
+      <a href="portfolio.html">Home</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="portfolio.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="inner">
+      <a class="back" href="portfolio.html"><i class="bx bx-arrow-back"></i>Back to portfolio</a>
+      <h1>All <span>Projects</span></h1>
+      <p class="sub">Things I've built, explored and experimented with.</p>
+
+      <div class="filters" id="filters" role="group" aria-label="Filter projects by category"></div>
+      <p class="sr" id="status" role="status" aria-live="polite"></p>
+      <p class="empty" id="empty" hidden></p>
+      <div class="projects" id="project-list"></div>
+
+      <div class="cta">
+        <a class="btn" href="portfolio.html"><i class="bx bx-arrow-back"></i>Back to Portfolio</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>&copy; 2026 Mehul Dubey. All rights reserved.</footer>
+
+  <script src="projects-data.js"></script>
+  <script>
+    const FILTERS = [
+      { key: "all",      label: "All" },
+      { key: "frontend", label: "Frontend" },
+      { key: "backend",  label: "Backend" },
+      { key: "mern",     label: "MERN Stack" },
+      { key: "python",   label: "Python" },
+    ];
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const list = document.getElementById('project-list');
+    const bar = document.getElementById('filters');
+    const empty = document.getElementById('empty');
+    const status = document.getElementById('status');
+    const count = key => key === 'all' ? PROJECTS.length : PROJECTS.filter(p => (p.cat || []).includes(key)).length;
+
+    function card(p) {
+      return `
+      <article class="proj">
+        <div class="thumb" style="--h:${p.hue}" aria-hidden="true"><i class="bx ${esc(p.icon)}"></i></div>
+        <div class="pbody">
+          <h2>${esc(p.name)} <span class="badge${p.live ? ' live' : ''}">${esc(p.badge)}</span></h2>
+          <p>${esc(p.desc)}</p>
+          <div class="chips">${p.stack.map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>
+          <div class="links">
+            ${p.github ? `<a href="${esc(p.github)}" target="_blank" rel="noopener"><i class="bx bxl-github"></i>GitHub</a>` : ''}
+            ${p.live ? `<a href="${esc(p.live)}" target="_blank" rel="noopener"><i class="bx bx-link-external"></i>Live demo</a>` : ''}
+          </div>
+        </div>
+      </article>`;
+    }
+
+    function show(key) {
+      const items = key === 'all' ? PROJECTS : PROJECTS.filter(p => (p.cat || []).includes(key));
+      list.innerHTML = items.map(card).join('');
+      const label = FILTERS.find(f => f.key === key).label;
+      empty.hidden = items.length > 0;
+      empty.textContent = items.length ? '' : `No ${label} projects yet. More are on the way.`;
+      status.textContent = `Showing ${items.length} ${label} project${items.length === 1 ? '' : 's'}`;
+      bar.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.key === key)));
+      history.replaceState(null, '', key === 'all' ? location.pathname : '#' + key);
+    }
+
+    bar.innerHTML = FILTERS.map(f =>
+      `<button type="button" data-key="${f.key}" aria-pressed="false">${f.label} <span>${count(f.key)}</span></button>`).join('');
+    bar.addEventListener('click', e => { const b = e.target.closest('button'); if (b) show(b.dataset.key); });
+
+    const start = location.hash.slice(1);
+    show(FILTERS.some(f => f.key === start) ? start : 'all');
+  </script>
+</body>
+</html>
